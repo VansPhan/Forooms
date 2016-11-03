@@ -9,17 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var CommentsComponent = (function () {
+    function CommentsComponent() {
     }
-    AppComponent = __decorate([
+    CommentsComponent.prototype.ngOnInit = function () {
+        this.comments = [];
+        this.comments.push({ id: 1, text: "Hello?" });
+    };
+    CommentsComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: '<h1>My First Angular App</h1>'
+            selector: 'comments',
+            templateUrl: 'app/comments.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], CommentsComponent);
+    return CommentsComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.CommentsComponent = CommentsComponent;
+//# sourceMappingURL=comment.component.js.map
