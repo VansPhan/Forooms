@@ -8,7 +8,7 @@ var Comment = mongoose.model("Comment");
 app.use(parser.urlencoded({extended: true}));
 app.use(parser.json({extended: true}));
 
-app.get('/', function(req, res) {
+app.get('/comments', function(req, res) {
 	Comment.find({}).then(function(comments){
    	res.json({ comments });
   	});

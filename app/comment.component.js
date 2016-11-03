@@ -9,19 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var service_1 = require('./models/service');
+var http_1 = require('@angular/http');
 var CommentsComponent = (function () {
-    function CommentsComponent() {
+    function CommentsComponent(commentService) {
+        this.commentService = commentService;
+        this.comments = commentService.comments;
     }
     CommentsComponent.prototype.ngOnInit = function () {
-        this.comments = [];
-        this.comments.push({ id: 1, text: "Hello?" });
+        var _this = this;
+        this.commentService.getComments()
+            .subscribe(function (comments) {
+            _this.comments = _this.commentService.comments;
+        });
     };
     CommentsComponent = __decorate([
         core_1.Component({
             selector: 'comments',
-            templateUrl: 'app/comments.html'
+            templateUrl: 'app/comments.html',
+            providers: [service_1.CommentService, http_1.HTTP_PROVIDERS]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [service_1.CommentService])
     ], CommentsComponent);
     return CommentsComponent;
 }());
