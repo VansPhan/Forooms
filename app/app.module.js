@@ -10,15 +10,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
-var comment_component_1 = require('./comment.component');
+var angular2_jwt_1 = require('angular2-jwt');
+var app_component_1 = require('./app.component');
+var home_component_1 = require('./home.component');
+var app_routes_1 = require('./app.routes');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [comment_component_1.CommentsComponent],
-            bootstrap: [comment_component_1.CommentsComponent]
+            declarations: [
+                app_component_1.AppComponent,
+                home_component_1.HomeComponent
+            ],
+            providers: [
+                app_routes_1.appRoutingProviders,
+                angular2_jwt_1.AUTH_PROVIDERS
+            ],
+            imports: [
+                platform_browser_1.BrowserModule,
+                app_routes_1.routing
+            ],
+            bootstrap: [app_component_1.AppComponent],
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

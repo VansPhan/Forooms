@@ -1,0 +1,1 @@
+# Forum web application to help practice using Auth0 for user authentication and sessions.

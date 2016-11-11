@@ -9,22 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-require('rxjs/add/operator/map');
-var CommentService = (function () {
-    function CommentService(http) {
-        this.http = http;
-        this.comments = [];
+var auth_service_1 = require('./auth.service');
+var HomeComponent = (function () {
+    function HomeComponent(auth) {
+        this.auth = auth;
     }
-    CommentService.prototype.getComments = function () {
-        return this.http.get('http://localhost:1337/comments')
-            .map(function (response) { return response.json(); });
-    };
-    CommentService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
-    ], CommentService);
-    return CommentService;
+    HomeComponent = __decorate([
+        core_1.Component({
+            selector: 'home',
+            template: "\n    <h4 *ngIf=\"auth.authenticated()\">You are logged in</h4>\n    <h4 *ngIf=\"!auth.authenticated()\">You are not logged in, please click 'Log in' button to login</h4>\n  "
+        }), 
+        __metadata('design:paramtypes', [auth_service_1.Auth])
+    ], HomeComponent);
+    return HomeComponent;
 }());
-exports.CommentService = CommentService;
-//# sourceMappingURL=service.js.map
+exports.HomeComponent = HomeComponent;
+;
+//# sourceMappingURL=home.component.js.map
